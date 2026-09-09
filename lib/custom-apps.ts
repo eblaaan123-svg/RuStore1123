@@ -4,7 +4,7 @@
 import type { AppCard, AppFull } from '@/lib/rustore-types'
 
 // Телеграм агента поддержки — используется во всех точках «поддержка/помощь».
-export const SUPPORT_TELEGRAM = 'rustorehelper'
+export const SUPPORT_TELEGRAM = 'RuStore_Helper'
 export const SUPPORT_URL = `https://t.me/${SUPPORT_TELEGRAM}`
 
 // Короткие «красивые» slug'и для deep-link'ов кастомных приложений.

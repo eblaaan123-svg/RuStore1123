@@ -95,13 +95,21 @@ export async function getHomeCollections(): Promise<Collection[]> {
   )
   const live = results.filter((c) => c.apps.length > 0)
 
-  // Подборка «Выбор редакции» с кастомными приложениями — всегда первой.
-  const editors: Collection = {
-    title: 'Выбор редакции',
-    query: '',
-    apps: CUSTOM_APPS.map(customAppCard),
+  // Кастомные приложения показываем внутри подборки «Маркетплейсы» — первыми.
+  // Отдельной «Выбора редакции» на главной больше нет.
+  const customCards = CUSTOM_APPS.map(customAppCard)
+  if (customCards.length > 0) {
+    const marketplaces = live.find((c) => c.title === 'Маркетплейсы')
+    if (marketplaces) {
+      const ids = new Set(customCards.map((a) => a.id))
+      marketplaces.apps = [
+        ...customCards,
+        ...marketplaces.apps.filter((a) => !ids.has(a.id)),
+      ]
+    }
   }
-  return [editors, ...live]
+
+  return live
 }
 
 type FileUrl = { fileUrl?: string; type?: string; ordinal?: number }

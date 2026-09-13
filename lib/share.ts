@@ -5,7 +5,7 @@ import { CUSTOM_APP_SLUGS } from '@/lib/custom-apps'
 
 // Бот и short name мини-аппа. Ссылки вида:
 // https://t.me/RuStoreHelperBot/RuStore?startapp=<slug>
-export const TG_BOT = 'RuStoreHelperBot'
+export const TG_BOT = 'RuStoreAppBot'
 export const TG_MINIAPP = 'RuStore'
 
 // Обратная карта slug -> packageName для кастомных приложений.
